@@ -8,7 +8,7 @@ from typing import IO, Any
 
 import numpy as np
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("workers")
 logger.addHandler(logging.NullHandler())
 
 PERIODIC_TABLE = {

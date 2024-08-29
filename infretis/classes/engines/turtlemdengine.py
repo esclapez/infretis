@@ -38,7 +38,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from infretis.classes.system import System
 
 
-logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
+logger = logging.getLogger("worker")  # pylint: disable=invalid-name
 logger.addHandler(logging.NullHandler())
 
 POTENTIAL_MAPS = {"doublewell": DoubleWell, "lennardjones": LennardJonesCut}

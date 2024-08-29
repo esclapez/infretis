@@ -1,6 +1,7 @@
 """Setup all that is needed for the infretis simulation."""
 import logging
 import os
+import psutil
 
 import tomli
 
@@ -186,3 +187,7 @@ def setup_logger(inp: str = "sim.log") -> None:
     fileh.setLevel(log_levl)
     fileh.setFormatter(get_log_formatter(log_levl))
     logger.addHandler(fileh)
+    logger.info("Logging main PID: %d", psutil.Process().pid)
+    logger.info('Executing on process: %s' % os.getpid())
+    logger.info('id %s', id(logger))
+    logger.info('logger %s', logger)

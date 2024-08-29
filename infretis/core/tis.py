@@ -12,7 +12,7 @@ from infretis.classes.engines.factory import create_engines
 from infretis.classes.orderparameter import create_orderparameters
 from infretis.classes.path import paste_paths
 
-logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
+logger = logging.getLogger("workers")  # pylint: disable=invalid-name
 logger.addHandler(logging.NullHandler())
 
 

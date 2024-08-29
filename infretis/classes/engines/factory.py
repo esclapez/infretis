@@ -14,7 +14,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from infretis.classes.engines.enginebase import EngineBase
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("workers")
 logger.addHandler(logging.NullHandler())
 
 
@@ -49,6 +49,7 @@ def create_engines(config: dict[str, Any]) -> dict[Any, EngineBase | None]:
     check_engine(config)
     engine = create_engine(config)
     logtxt = f'Created engine "{engine}" from settings.'
+    logger.info('id %s', id(logger))
     logger.info(logtxt)
     return {config["engine"]["engine"]: engine}
 

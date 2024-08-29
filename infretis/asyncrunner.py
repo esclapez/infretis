@@ -7,12 +7,14 @@ import logging
 import multiprocessing
 import threading
 import time
+import psutil
+import os
 from collections.abc import Callable
 from typing import Any
 
 from infretis.classes.formatter import get_log_formatter
 
-logger = logging.getLogger("")
+logger = logging.getLogger("workers")
 logger.setLevel(logging.DEBUG)
 
 
@@ -211,10 +213,14 @@ def worker_initializer(counter):
     log_levl = getattr(logging, "info".upper(), logging.INFO)
     fileh.setLevel(log_levl)
     fileh.setFormatter(get_log_formatter(log_levl))
+    logger.propagate=False
     logger.addHandler(fileh)
     logger.info("=============================")
-    logger.info("Logging file for worker %s", worker_id)
+    logger.info("Logging file for worker %s, %d", worker_id, psutil.Process().pid)
     logger.info("=============================\n")
+    logger.info('Executing on process: %s' % os.getpid())
+    logger.info('id %s', id(logger))
+    logger.info('logger %s', logger)
 
 
 class future_list:
